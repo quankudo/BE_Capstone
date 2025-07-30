@@ -10,6 +10,7 @@ const evaluateResRoutes = require('./routes/evaluateResRoutes');
 const restaurantRoutes = require('./routes/restaurantRoutes');
 const favoriteRoutes = require('./routes/favoriteRoutes');
 const dashboardRestRoutes = require('./routes/dashboardRestRoutes');
+const blogsRoutes = require('./routes/blogsRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
 const db = require('./config/db');
 
@@ -23,6 +24,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('/api/users', userRoutes);
 app.use('/api/dishes', dishRoutes);
 app.use('/api/restaurants', restaurantRoutes);
@@ -33,6 +35,7 @@ app.use('/api/cities', cityRoutes);
 app.use('/api/districts', districtRoutes);
 app.use('/api/restDashboard', dashboardRestRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/blogs', blogsRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
